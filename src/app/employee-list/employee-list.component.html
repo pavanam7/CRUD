@@ -1,0 +1,25 @@
+<!-- employee-list.component.html -->
+<div>
+  <h1>Employee List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+        <td>{{ employee.email }}</td>
+        <td>
+          <button (click)="viewEmployee(employee)">View</button>
+          <button (click)="editEmployee(employee)">Edit</button>
+          <button (click)="deleteEmployee(employee)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="addEmployee()">Add Employee</button>
+</div>

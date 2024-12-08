@@ -19,7 +19,6 @@
           "options": {
             "outputPath": "dist/employee-crud",
             "index": "src/index.html",
-            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],

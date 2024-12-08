@@ -1,0 +1,20 @@
+<!-- employee-edit.component.html -->
+<div *ngIf="employee">
+  <h2>Edit Employee</h2>
+  <form (ngSubmit)="onSubmit()">
+    <label>
+      First Name:
+      <input type="text" [(ngModel)]="employee.firstName" name="firstName" required />
+    </label>
+    <label>
+      Last Name:
+      <input type="text" [(ngModel)]="employee.lastName" name="lastName" required />
+    </label>
+    <label>
+      Email:
+      <input type="email" [(ngModel)]="employee.email" name="email" required />
+    </label>
+    <button type="submit">Edit Employee</button>
+    <button type="button" (click)="onCancel()">Back</button>
+  </form>
+</div>

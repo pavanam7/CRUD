@@ -1,0 +1,8 @@
+<!-- employee-view.component.html -->
+<div *ngIf="employee">
+  <h2>Employee Data</h2>
+  <p>First Name: {{ employee.firstName }}</p>
+  <p>Last Name: {{ employee.lastName }}</p>
+  <p>Email: {{ employee.email }}</p>
+  <button (click)="close()">Close</button>
+</div>

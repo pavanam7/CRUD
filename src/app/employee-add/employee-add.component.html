@@ -1,0 +1,20 @@
+<!-- employee-add.component.html -->
+<div>
+    <h2>Add Employee</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label>
+        First Name:
+        <input type="text" [(ngModel)]="newEmployee.firstName" name="firstName" required />
+      </label>
+      <label>
+        Last Name:
+        <input type="text" [(ngModel)]="newEmployee.lastName" name="lastName" required />
+      </label>
+      <label>
+        Email:
+        <input type="email" [(ngModel)]="newEmployee.email" name="email" required />
+      </label>
+      <button type="submit">Add Employee</button>
+      <button type="button" (click)="onCancel()">Back</button>
+    </form>
+  </div>
