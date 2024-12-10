@@ -1,8 +1,23 @@
-<!-- employee-view.component.html -->
-<div *ngIf="employee">
-  <h2>Employee Data</h2>
-  <p>First Name: {{ employee.firstName }}</p>
-  <p>Last Name: {{ employee.lastName }}</p>
-  <p>Email: {{ employee.email }}</p>
-  <button (click)="close()">Close</button>
+<div *ngIf="employee" class="employee-details">
+  <h2>Employee Details</h2>
+  <div class="detail-row">
+    <strong>ID:</strong> {{ employee.id }}
+  </div>
+  <div class="detail-row">
+    <strong>First Name:</strong> {{ employee.firstName }}
+  </div>
+  <div class="detail-row">
+    <strong>Last Name:</strong> {{ employee.lastName }}
+  </div>
+  <div class="detail-row">
+    <strong>Email:</strong> {{ employee.email }}
+  </div>
+  
+  <div class="actions">
+    <button (click)="goBack()">Back to List</button>
+  </div>
+</div>
+
+<div *ngIf="!employee" class="no-employee">
+  <p>No employee found</p>
 </div>

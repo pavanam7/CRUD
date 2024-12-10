@@ -1,20 +1,67 @@
-<!-- employee-edit.component.html -->
-<div *ngIf="employee">
-  <h2>Edit Employee</h2>
-  <form (ngSubmit)="onSubmit()">
-    <label>
-      First Name:
-      <input type="text" [(ngModel)]="employee.firstName" name="firstName" required />
-    </label>
-    <label>
-      Last Name:
-      <input type="text" [(ngModel)]="employee.lastName" name="lastName" required />
-    </label>
-    <label>
-      Email:
-      <input type="email" [(ngModel)]="employee.email" name="email" required />
-    </label>
-    <button type="submit">Edit Employee</button>
-    <button type="button" (click)="onCancel()">Back</button>
+<div class="employee-edit-container">
+  <h2>{{ isAddMode ? 'Add' : 'Edit' }} Employee</h2>
+  
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input 
+        type="text" 
+        id="firstName" 
+        formControlName="firstName" 
+        class="form-control"
+        [class.is-invalid]="firstName?.invalid && firstName?.touched"
+      >
+      <div *ngIf="firstName?.invalid && firstName?.touched" class="invalid-feedback">
+        <div *ngIf="firstName?.errors?.['required']">First name is required</div>
+        <div *ngIf="firstName?.errors?.['minlength']">First name must be at least 2 characters</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input 
+        type="text" 
+        id="lastName" 
+        formControlName="lastName" 
+        class="form-control"
+        [class.is-invalid]="lastName?.invalid && lastName?.touched"
+      >
+      <div *ngIf="lastName?.invalid && lastName?.touched" class="invalid-feedback">
+        <div *ngIf="lastName?.errors?.['required']">Last name is required</div>
+        <div *ngIf="lastName?.errors?.['minlength']">Last name must be at least 2 characters</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email" 
+        class="form-control"
+        [class.is-invalid]="email?.invalid && email?.touched"
+      >
+      <div *ngIf="email?.invalid && email?.touched" class="invalid-feedback">
+        <div *ngIf="email?.errors?.['required']">Email is required</div>
+        <div *ngIf="email?.errors?.['email']">Invalid email format</div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button 
+        type="submit" 
+        [disabled]="employeeForm.invalid"
+        class="btn btn-primary"
+      >
+        {{ isAddMode ? 'Add' : 'Update' }} Employee
+      </button>
+      <button 
+        type="button" 
+        (click)="onCancel()"
+        class="btn btn-secondary"
+      >
+        Cancel
+      </button>
+    </div>
   </form>
 </div>

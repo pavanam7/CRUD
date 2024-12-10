@@ -1,25 +1,54 @@
-<!-- employee-list.component.html -->
-<div>
-  <h1>Employee List</h1>
-  <table>
+<div class="employee-list-container">
+  <h2>Employee List</h2>
+  
+  <div class="actions">
+    <button 
+      (click)="addEmployee()" 
+      aria-label="Add New Employee"
+      class="btn btn-primary"
+    >
+      Add New Employee
+    </button>
+  </div>
+
+  <table class="table" *ngIf="employees.length > 0">
     <thead>
       <tr>
         <th>Name</th>
         <th>Email</th>
-        <th>Action</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let employee of employees">
+      <tr *ngFor="let employee of employees; trackBy: trackByEmployeeId">
         <td>{{ employee.firstName }} {{ employee.lastName }}</td>
         <td>{{ employee.email }}</td>
         <td>
-          <button (click)="viewEmployee(employee)">View</button>
-          <button (click)="editEmployee(employee)">Edit</button>
-          <button (click)="deleteEmployee(employee)">Delete</button>
+          <button 
+            (click)="viewEmployee(employee.id)" 
+            aria-label="View Employee"
+            class="btn btn-info"
+          >
+            View
+          </button>
+          <button 
+            (click)="editEmployee(employee.id)" 
+            aria-label="Edit Employee"
+            class="btn btn-warning"
+          >
+            Edit
+          </button>
+          <button 
+            (click)="deleteEmployee(employee.id)" 
+            aria-label="Delete Employee"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
-  <button (click)="addEmployee()">Add Employee</button>
+
+  <p *ngIf="employees.length === 0">No employees found</p>
 </div>
